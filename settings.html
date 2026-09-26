@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>预设&插件下载 · 影像工作室</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238d9b8f'/%3E%3Cpath d='M 16 18 L 48 18 L 16 46 L 48 46' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M 32 12 L 16 50 L 48 50' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='24' y1='36' x2='40' y2='36' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f2ed; --surface:#ebe8e2; --surface-2:#e2dfd8;
+  --text:#2e3234; --muted:#747a7d; --line:#d8d3cb;
+  --accent:#8d9b8f; --accent-dark:#6f7d72; --accent-soft:#dfe5df;
+  --radius:18px; --shadow:0 10px 30px rgba(46,50,52,.06); --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+
+.site-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(244,242,237,.86);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:68px}
+.brand{font-weight:700;letter-spacing:.12em;font-size:.95rem}
+.brand span{color:var(--accent-dark)}
+.nav{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
+.nav a{transition:color .2s ease}
+.nav a:hover{color:var(--text)}
+.nav a.active{color:var(--text)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;padding:0 20px;border-radius:999px;
+  border:1px solid var(--line);font-size:.9rem;
+  transition:all .2s ease;cursor:pointer;
+}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn-ghost{background:transparent;color:var(--text)}
+.btn-ghost:hover{background:var(--surface)}
+.btn-small{min-height:36px;padding:0 16px;font-size:.82rem}
+
+.page-head{padding:80px 0 40px}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dark);margin:0 0 14px}
+.page-head h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.12;letter-spacing:-.03em;margin:0 0 16px;font-weight:300}
+.page-head p{max-width:640px;color:var(--muted);margin:0}
+
+.section{padding:20px 0 80px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
+.section-head h2{font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0;letter-spacing:-.02em}
+.section-desc{color:var(--muted);font-size:.9rem;margin:0;max-width:360px}
+
+/* 长条状卡片列表 */
+.preset-list{display:grid;grid-template-columns:1fr;gap:16px}
+.preset-card{
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 30px;box-shadow:var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.preset-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(46,50,52,.09)}
+.preset-info{flex:1;min-width:0}
+.preset-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-size:.72rem;color:var(--accent-dark);background:var(--accent-soft);padding:4px 10px;border-radius:999px}
+.preset-info h3{margin:0 0 6px;font-size:1.15rem}
+.preset-info p{margin:0;color:var(--muted);font-size:.88rem}
+.preset-action{flex-shrink:0}
+
+.notice{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:20px 24px;color:var(--muted);font-size:.86rem;margin-bottom:36px;
+}
+.notice strong{color:var(--text);font-weight:600}
+.notice code{background:var(--surface-2);padding:2px 6px;border-radius:6px;font-size:.84rem}
+
+.back-row{padding:0 0 70px}
+.site-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.82rem}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:720px){
+  .nav{gap:14px;font-size:.8rem}
+  .page-head{padding:60px 0 30px}
+  .section{padding:10px 0 60px}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .preset-card{flex-direction:column;align-items:flex-start;gap:18px;padding:22px}
+  .preset-action{width:100%}
+  .preset-action .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">STUDIO<span>.</span></a>
+    <nav class="nav">
+      <a href="works.html">作品</a>
+      <a href="free.html">免费素材</a>
+      <a class="active" href="settings.html">预设下载</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">DaVinci Resolve Presets &amp; Plugins</p>
+      <h1>预设&amp;插件下载</h1>
+      <p>适用于 DaVinci Resolve 的标题预设、调色 LUT 与插件资源，下载后解压，按说明导入即可使用。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="notice">
+        <strong>安装方法：</strong>具体路径见压缩包内说明。
+      </div>
+
+      <div class="preset-list">
+
+        <article class="preset-card">
+          <div class="preset-info">
+            <div class="preset-meta">
+              <span class="tag">标题</span>
+              <span class="tag">4 款</span>
+            </div>
+            <h3>极简标题动画预设 01</h3>
+            <p>干净利落的文字动画，适合片头、章节标题与产品展示。</p>
+          </div>
+         <div class="preset-action">
+  <a class="btn btn-primary btn-small" href="tutorial-title-1.html">查看</a>
+</div>
+        </article>
+
+        <article class="preset-card">
+          <div class="preset-info">
+            <div class="preset-meta">
+              <span class="tag">LUT</span>
+              <span class="tag">调色</span>
+            </div>
+            <h3>胶片模拟 LUT 包 01</h3>
+            <p>适用于 DaVinci Resolve 的 .cube 调色 LUT，含 5 款胶片风格，用于 Color 页面。</p>
+          </div>
+         <div class="preset-action">
+  <a class="btn btn-primary btn-small" href="tutorial-lut-PowerGrade-1.html">查看</a>
+</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container back-row">
+    <a class="btn btn-ghost" href="index.html">← 返回主页</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 STUDIO. 保留所有权利。</span>
+    <span>影像作品集</span>
+  </div>
+</footer>
+</body>
+</html>

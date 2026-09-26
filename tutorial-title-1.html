@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic-Title-MT-Voc.01 · 使用教程</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238d9b8f'/%3E%3Cpath d='M 16 18 L 48 18 L 16 46 L 48 46' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M 32 12 L 16 50 L 48 50' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='24' y1='36' x2='40' y2='36' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f2ed; --surface:#ebe8e2; --surface-2:#e2dfd8;
+  --text:#2e3234; --muted:#747a7d; --line:#d8d3cb;
+  --accent:#8d9b8f; --accent-dark:#6f7d72; --accent-soft:#dfe5df;
+  --radius:18px; --shadow:0 10px 30px rgba(46,50,52,.06); --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+
+.site-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(244,242,237,.86);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:68px}
+.brand{font-weight:700;letter-spacing:.12em;font-size:.95rem}
+.brand span{color:var(--accent-dark)}
+.nav{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
+.nav a{transition:color .2s ease}
+.nav a:hover{color:var(--text)}
+.nav a.active{color:var(--text)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;padding:0 20px;border-radius:999px;
+  border:1px solid var(--line);font-size:.9rem;
+  transition:all .2s ease;cursor:pointer;
+}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn-ghost{background:transparent;color:var(--text)}
+.btn-ghost:hover{background:var(--surface)}
+.btn-small{min-height:36px;padding:0 16px;font-size:.82rem}
+
+.page-head{padding:80px 0 30px}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dark);margin:0 0 14px}
+.page-head h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:300}
+.page-head p{max-width:680px;color:var(--muted);margin:0}
+
+.section{padding:20px 0 60px}
+.tutorial-section{margin-bottom:56px}
+.tutorial-section h2{
+  font-size:clamp(1.2rem,2.2vw,1.5rem);
+  margin:0 0 18px;letter-spacing:-.02em;font-weight:500;
+}
+.tutorial-section p{color:var(--muted);margin:0 0 14px}
+
+/* 视频教程容器 */
+.video-box{
+  background:var(--surface-2);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+}
+.video-box video{width:100%;height:100%;object-fit:cover}
+.video-box iframe{width:100%;height:100%;border:0}
+.video-placeholder{
+  color:var(--muted);font-size:.9rem;text-align:center;padding:40px;
+}
+
+/* 图文步骤 */
+.steps{list-style:none;counter-reset:step;padding:0;margin:0}
+.steps li{
+  counter-increment:step;position:relative;
+  padding:0 0 24px 52px;color:var(--muted);font-size:.92rem;
+}
+.steps li::before{
+  content:counter(step);position:absolute;left:0;top:0;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent-dark);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;font-weight:600;
+}
+.steps li strong{color:var(--text);font-weight:600;display:block;margin-bottom:4px}
+.steps li:not(:last-child)::after{
+  content:'';position:absolute;left:15px;top:36px;bottom:8px;
+  width:1px;background:var(--line);
+}
+.steps code{
+  background:var(--surface);padding:2px 8px;border-radius:6px;
+  font-size:.84rem;color:var(--accent-dark);
+}
+
+/* 提示条 */
+.notice{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:20px 24px;color:var(--muted);font-size:.86rem;margin:0 0 20px;
+}
+.notice strong{color:var(--text);font-weight:600}
+
+/* 底部下载区 */
+.download-box{
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+  background:var(--surface-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:32px 36px;margin-top:20px;
+}
+.download-box h3{margin:0 0 6px;font-size:1.15rem;font-weight:500}
+.download-box p{margin:0;color:var(--muted);font-size:.86rem}
+
+.back-row{padding:0 0 70px}
+.site-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.82rem}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:720px){
+  .nav{gap:14px;font-size:.8rem}
+  .page-head{padding:60px 0 24px}
+  .section{padding:10px 0 40px}
+  .download-box{flex-direction:column;align-items:flex-start}
+  .download-box .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">STUDIO<span>.</span></a>
+    <nav class="nav">
+      <a href="works.html">作品</a>
+      <a href="free.html">免费素材</a>
+      <a class="active" href="settings.html">预设下载</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Tutorial · Title Preset</p>
+      <h1>Cinematic-Title-MT-Voc.01</h1>
+      <p>干净利落的文字动画，适合片头、章节标题与产品展示。本页包含视频演示与图文安装步骤。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- 视频教程 -->
+      <div class="tutorial-section">
+        <h2>视频教程</h2>
+        <div class="video-box">
+          <!-- 换成你的视频，本地或 R2 链接均可 -->
+          <video controls playsinline preload="metadata" poster="images/tutorial-poster.jpg">
+            <source src="videos/tutorial-title-1.mp4" type="video/mp4">
+            你的浏览器不支持视频播放。
+          </video>
+          <!-- 如果想嵌入 B 站视频，把上面 video 整段删掉，用下面这行，BV 号换成你的：
+          <iframe src="//player.bilibili.com/player.html?bvid=BVxxxxxxxxxx&page=1" scrolling="no" allowfullscreen="true"></iframe>
+          -->
+        </div>
+      </div>
+
+      <!-- 图文步骤 -->
+      <div class="tutorial-section">
+        <h2>安装步骤</h2>
+        <ol class="steps">
+          <li>
+            <strong>下载并解压</strong>
+            点击页面底部“下载 .zip”，解压后得到 5 个 <code>.setting</code> 文件与一份安装说明。
+          </li>
+          <li>
+            <strong>找到预设目录</strong>
+            Windows：按住 <code>Win + R</code> 输入 <code>%AppData%</code>；<br>
+            Mac：访达中按 <code>Command + Shift + G</code> 输入 <code>~/Library/Application Support</code>。
+          </li>
+          <li>
+            <strong>放入 Templates 目录</strong>
+            按路径进入：<br>
+            <code>Blackmagic Design → DaVinci Resolve → Support → Fusion → Templates → Edit → Titles</code><br>
+            把 <code>.setting</code> 文件拖进去。
+          </li>
+          <li>
+            <strong>重启达芬奇</strong>
+            关闭并重新打开 DaVinci Resolve，让预设被加载。
+          </li>
+          <li>
+            <strong>在剪辑页使用</strong>
+            打开 Edit 页面 → 效果库 → Toolbox → Titles → Fusion Titles，找到对应预设，拖到时间线即可。
+          </li>
+        </ol>
+      </div>
+
+      <!-- 常见问题 -->
+      <div class="tutorial-section">
+        <h2>常见问题</h2>
+        <div class="notice">
+          <strong>看不到预设？</strong> 确认文件放在了 <code>Titles</code> 文件夹里，不是 <code>Effects</code> 或 <code>Transitions</code>。放错分类不会显示。
+        </div>
+        <div class="notice">
+          <strong>拖到时间线没反应？</strong> 先检查达芬奇版本，建议 18 以上。老版本可能不兼容新版 Fusion 节点。
+        </div>
+        <div class="notice">
+          <strong>Mac 找不到资源库？</strong> 访达默认隐藏，按 <code>Command + Shift + G</code> 直接输入路径最快。
+        </div>
+      </div>
+
+      <!-- 下载区 -->
+      <div class="download-box">
+        <div>
+          <h3>Cinematic-Title-MT-Voc.01</h3>
+          <p>5 个 .setting 文件 + 安装说明，zip 压缩包。</p>
+        </div>
+        <a class="btn btn-primary" href="settings/title-pack-1.zip" download>下载 .zip</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="container back-row">
+    <a class="btn btn-ghost" href="settings.html">← 返回预设下载</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 STUDIO. 保留所有权利。</span>
+    <span>影像作品集</span>
+  </div>
+</footer>
+</body>
+</html>

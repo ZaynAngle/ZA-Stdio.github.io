@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zayn · Angle 作品集 · MedIaStdIo</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238d9b8f'/%3E%3Cpath d='M 16 18 L 48 18 L 16 46 L 48 46' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M 32 12 L 16 50 L 48 50' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='24' y1='36' x2='40' y2='36' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f2ed; --surface:#ebe8e2; --surface-2:#e2dfd8;
+  --text:#2e3234; --muted:#747a7d; --line:#d8d3cb;
+  --accent:#8d9b8f; --accent-dark:#6f7d72; --accent-soft:#dfe5df;
+  --radius:18px; --shadow:0 10px 30px rgba(46,50,52,.06); --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+
+.site-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(244,242,237,.86);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:68px}
+.brand{font-weight:700;letter-spacing:.12em;font-size:.95rem}
+.brand span{color:var(--accent-dark)}
+.nav{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
+.nav a{transition:color .2s ease}
+.nav a:hover{color:var(--text)}
+.nav a.active{color:var(--text)}
+
+.page-head{padding:80px 0 40px}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dark);margin:0 0 14px}
+.page-head h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.12;letter-spacing:-.03em;margin:0 0 16px;font-weight:650}
+.page-head p{max-width:620px;color:var(--muted);margin:0}
+
+.section{padding:20px 0 80px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
+.section-head h2{font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0;letter-spacing:-.02em}
+.section-desc{color:var(--muted);font-size:.9rem;margin:0;max-width:360px}
+
+.works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.work-card{
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.work-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(46,50,52,.09)}
+.video-wrap{background:var(--surface-2)}
+.video-wrap video{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--surface-2)}
+.work-body{padding:20px}
+.work-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-size:.72rem;color:var(--accent-dark);background:var(--accent-soft);padding:4px 10px;border-radius:999px}
+.work-body h3{margin:0 0 8px;font-size:1.1rem}
+.work-body p{margin:0 0 16px;color:var(--muted);font-size:.9rem}
+.download-link{font-size:.88rem;color:var(--accent-dark);border-bottom:1px solid currentColor;padding-bottom:2px}
+.download-link:hover{color:var(--text)}
+
+.back-row{padding:0 0 70px}
+
+.site-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.82rem}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:720px){
+  .nav{gap:16px;font-size:.82rem}
+  .page-head{padding:60px 0 30px}
+  .section{padding:10px 0 60px}
+  .section-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">STUDIO<span>.</span></a>
+    <nav class="nav">
+      <a class="active" href="works.html">作品</a>
+      <a href="free.html">免费素材</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Selected Works</p>
+      <h1>精选作品</h1>
+      <p>视频支持在线播放，点击“下载视频”可保存原片。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="works-grid">
+        <article class="work-card">
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="images/poster-1.jpg">
+              <source src="videos/work-1.mp4" type="video/mp4">
+              你的浏览器不支持视频播放。
+            </video>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="tag">城市</span>
+              <span class="tag">短片</span>
+            </div>
+            <h3>城市漫游</h3>
+            <p>一段关于城市节奏与光影的短片练习。</p>
+            <a class="download-link" href="videos/work-1.mp4" download>下载视频</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="images/poster-2.jpg">
+              <source src="videos/work-2.mp4" type="video/mp4">
+              你的浏览器不支持视频播放。
+            </video>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="tag">自然</span>
+              <span class="tag">空镜</span>
+            </div>
+            <h3>山林晨雾</h3>
+            <p>清晨山间的雾气与光线，适合作为氛围素材。</p>
+            <a class="download-link" href="videos/work-2.mp4" download>下载视频</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="video-wrap">
+            <video controls preload="metadata" poster="images/poster-3.jpg">
+              <source src="videos/work-3.mp4" type="video/mp4">
+              你的浏览器不支持视频播放。
+            </video>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="tag">品牌</span>
+              <span class="tag">视觉</span>
+            </div>
+            <h3>品牌短片</h3>
+            <p>为小型品牌拍摄的简约视觉短片。</p>
+            <a class="download-link" href="videos/work-3.mp4" download>下载视频</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container back-row">
+    <a class="btn btn-ghost" href="index.html">← 返回主页</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 STUDIO. 保留所有权利。</span>
+    <span>影像作品集</span>
+  </div>
+</footer>
+</body>
+</html>
